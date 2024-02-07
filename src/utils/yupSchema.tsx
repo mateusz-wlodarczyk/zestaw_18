@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const initialValues: FormValues = {
-  input: 0,
+  input: 1,
   shoppingList: [
     // {
     //   description: '',
@@ -25,7 +25,7 @@ export const validationSchema = yup.object().shape({
   input: yup.number().required('it is required'),
   shoppingList: yup.array().of(
     yup.object().shape({
-      description: yup.string().required('it is required'),
+      product: yup.string().required('it is required'),
       price: yup.number().required('it is required'),
       discountPrice: yup.number().required('it is required'),
     }),

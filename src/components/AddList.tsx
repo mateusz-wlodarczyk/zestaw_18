@@ -12,11 +12,9 @@ export const AddList = () => {
   const formik = useFormik<FormValues>({
     enableReinitialize: true,
     initialValues: initialValues,
-    validationSchema: validationSchema,
+    // validationSchema: validationSchema,
     onSubmit: () => {
-      console.log('formik.values', formik.values);
-
-      // dispatch(createNewList(formik.values));
+      dispatch(createNewList(formik.values.shoppingList));
     },
   });
   return (
@@ -24,16 +22,15 @@ export const AddList = () => {
       <Box>
         <form onSubmit={formik.handleSubmit}>
           <CustomInput<FormValues> accessor='input' type='number' formik={formik} name='input' />
-          <Button type='submit'>create form</Button>
           {Array.from(Array(formik.values.input)).map((el, index) => {
             return (
               <Box key={index}>
                 <CustomInput<FormValues>
                   //Type '`shoppingList.${number}.description`' is not assignable to type '"input" | "shoppingList"'.ts(2322)
-                  accessor={`shoppingList.${index}.description`}
+                  accessor={`shoppingList.${index}.product`}
                   type='text'
                   formik={formik}
-                  name={`shoppingList.${index}.description`}
+                  name={`shoppingList.${index}.product`}
                 />
 
                 <CustomInput<FormValues>
@@ -45,10 +42,10 @@ export const AddList = () => {
                 />
                 <CustomInput<FormValues>
                   //Type '`shoppingList.${number}.description`' is not assignable to type '"input" | "shoppingList"'.ts(2322)
-                  accessor={`shoppingList.${index}.price`}
+                  accessor={`shoppingList.${index}.discountPrice`}
                   type='number'
                   formik={formik}
-                  name={`shoppingList.${index}.price`}
+                  name={`shoppingList.${index}.discountPrice`}
                 />
               </Box>
             );

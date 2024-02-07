@@ -57,17 +57,18 @@ export default function SingleListView({ item }: { item: ShoppingListSlice }) {
           <Line data={chartData} options={options} />
         </Box>
         <Container sx={{ width: '250px' }}>
-          {item.list.map((el) => {
-            return (
-              <Flex>
-                <Box key={el.id}>
-                  <Text>
-                    product: {el.product}, ${el.price}
-                  </Text>
-                </Box>
-              </Flex>
-            );
-          })}
+          {item !== undefined &&
+            item.list.map((el) => {
+              return (
+                <Flex key={Math.floor(Math.random() * 99999)}>
+                  <Box>
+                    <Text>
+                      product: {el.product}, ${el.price}
+                    </Text>
+                  </Box>
+                </Flex>
+              );
+            })}
         </Container>
       </Flex>
     </Box>

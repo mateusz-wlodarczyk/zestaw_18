@@ -13,7 +13,6 @@ export const CustomInput = <T,>({
   accessor: keyof T & string;
   formik: FormikProps<T>;
 }) => {
-  //do dyskusji:
   const typeOfValue = type === 'string' ? 'string' : 3;
   return (
     <FormControl>

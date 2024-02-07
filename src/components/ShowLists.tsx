@@ -9,9 +9,9 @@ export const ShowLists = () => {
 
   return (
     <div>
-      {shoppingLists.map((el) => (
-        <SingleList key={el.id} item={el} />
-      ))}
+      {shoppingLists.map((el) => {
+        return <SingleList key={el.id} item={el} />;
+      })}
     </div>
   );
 };

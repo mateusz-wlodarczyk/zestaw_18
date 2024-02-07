@@ -1,5 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
+//typy z formika dopasowac
+
 export type List = {
   product: string;
   price: number;
@@ -67,9 +69,13 @@ export const shoppingListSlice = createSlice({
   name: 'shoppingListSlice',
   reducers: {
     createNewList: (state, action) => {
-      //najpierw otypowac formika i pozniej tutaj ogarnac
-      console.log(action);
-      return [...state];
+      return [
+        ...state,
+        {
+          id: Math.floor(Math.random() * 1000),
+          list: action.payload,
+        },
+      ];
     },
   },
 });
